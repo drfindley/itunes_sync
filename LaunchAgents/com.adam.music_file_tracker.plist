@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Label</key>
+<string>com.adam.music_file_tracker</string>
+<key>ProgramArguments</key>
+<array>
+   <string>/Library/Application Support/Music Transfer/music_file_tracker.py</string>
+</array>
+<key>WatchPaths</key>
+<array>
+    <string>/Users/adam/Dropbox/Music Transfer/AmazonMP3</string>
+    <string>/Users/adam/Dropbox/Music Transfer/Emusic</string>
+    <string>/Users/adam/Dropbox/Music Transfer/iTunes</string>
+    <string>/Users/adam/Dropbox/Music Transfer/other</string>
+</array>
+</dict>
+</plist>
