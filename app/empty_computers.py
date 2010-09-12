@@ -7,7 +7,7 @@ from pprint import pprint
 with open(computers, 'rb') as f:
     p = pickle.load(f)
 
-p['melatonin'] = p['fasttrack'] 
+p['cuttooth'] = p['fasttrack'] = p['melatonin'] = {} 
 pprint(p)
 
 with open(computers, 'wb') as f:

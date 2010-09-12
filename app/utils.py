@@ -1,5 +1,6 @@
 import os
 import sys
+from time import sleep, time
 
 def execute(cmd):
     import subprocess
@@ -23,8 +24,45 @@ def combine_dicts(one,two):
         out[key] = list(set(one.get(key,[]) + two.get(key,[])))
     return out
 
+def check_lock(lock_file,exit=False):
+    for i in range(0,2):
+        if os.path.exists(lock_file):
+            #print "Lock exists: %s" % lock_file
+            if exit:
+                sys.exit(0)
+            else:
+                with open(lock_file,'r') as lock:
+                    l = lock.read()
+                    #(host, timestamp) = l.split()
+                    #print l.split()
+                    #print host, timestamp
+                    return l.split()
+        return None
+        #sleep(5)
+
 def aquire_lock(lock_file):
     if os.path.exists(lock_file):
         print "Lock already aquired"
         sys.exit(0)
+
+    with open(lock_file, 'w') as lock:
+        lock.write("%s %f" % (get_hostname(), time()))
+
+def remove_lock(lock_file):
+    if os.path.exists(lock_file):
+        print "Lock already aquired"
+        sys.exit(0)
     open(lock_file, 'w').close()
+
+def is_root():
+    whoami = execute('whoami')
+    if whoami == 'root':
+        return True
+
+    return False
+
+def load_agent(agent):
+    execute("launchctl load %s" % agent)
+
+def unload_agent(agent):
+    execute("launchctl unload %s" % agent)
