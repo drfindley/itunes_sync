@@ -78,8 +78,8 @@ while True:
             for f in files:
                 #print f
                 filename = os.path.abspath(os.path.join(path, f))
-                fh = open(filename,'rb')
-                hash = md5(fh.read()).hexdigest()
+                with open(filename,'rb') as fh:
+                    hash = md5(fh.read()).hexdigest()
                 short_filename = filename[len(base_folder) + len(monitor_base_folder) + 2:]
                 music_files[folder].append((short_filename,hash))
 
@@ -139,7 +139,10 @@ if music_files:
     for folder in delete_folders:
         for i in range(folder.count('/'),0,-1):
             sub_folder = '/'.join(folder.split('/')[:i+1])
-            shutil.rmtree(os.path.join(base_folder, monitor_base_folder, sub_folder))
+            try:
+                shutil.rmtree(os.path.join(base_folder, monitor_base_folder, sub_folder))
+            except OSError:
+                pass
     try:
         #pprint(inventory)
         f = file(os.path.join(transfer_folder_abs,'inventory.pickle'),'w') 

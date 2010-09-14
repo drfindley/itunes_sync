@@ -16,7 +16,7 @@ hosts = {
     'melatonin':{
         'base_folder':'/Users/adam/Dropbox/Music Transfer',
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Cuttooth]', 'iTunes [Exclude Fasttrack]'],
-        'backup_folders': ['/Volumes/Drobo/Music [Losssy]'],
+        'backup_folders': ['/Volumes/Drobo/Music [Lossy]'],
         'itunes_folder': '/Volumes/iTunes/iTunes Test/iTunes Media/Automatically Add to iTunes',
     },
 }
