@@ -17,7 +17,7 @@ file_monitor_agent = '/Library/LaunchAgents/com.adam.music_transfer.file_monitor
 
 utils.unload_agent(file_monitor_agent)
 
-monitor_folder = config.monitor['monitor_base_folder']
+monitor_base_folder = config.monitor['monitor_base_folder']
 base_folder = config.hosts[hostname]['base_folder']
 
 
@@ -25,7 +25,7 @@ paths = ""
 
 for monitor_folder in config.hosts[hostname]['monitor_folders']:
     paths = paths + "    <string>%s</string>\n" % \
-        os.path.join(base_folder,monitor_folder,monitor_folder)
+        os.path.join(base_folder,monitor_base_folder,monitor_folder)
 
 file_monitor_plist = """
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"

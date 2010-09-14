@@ -52,7 +52,7 @@ for i in range(0,2):
         break
     elif i == 0:
         all_in = True
-        #sleep(60 * 5)
+        sleep(60 * 5)
 
 #print "%f" % first_time
 print "Winner: %s" % first_host
@@ -101,7 +101,7 @@ while True:
     f.close()
 
     print "sleep 300"
-    #sleep(300)
+    sleep(300)
 
 # Finished
 os.remove(music_list_pickle)
@@ -113,37 +113,40 @@ transfer_folder = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%f")
 transfer_folder_abs = os.path.join(base_folder, transfer_base_folder,transfer_folder)
 #print transfer_folder_abs
 
-delete_folders = set()
+if music_files:
+    delete_folders = set()
 
-for folder, files in music_files.iteritems():
-    for filename,md5 in files:
-        full_path = os.path.join(base_folder, monitor_base_folder, filename)
-        short_filename = filename[len(folder) +1:]
-        new_path = os.path.join(transfer_folder_abs, short_filename)
-        directory =  os.path.dirname(short_filename)
+    for folder, files in music_files.iteritems():
+        for filename,md5 in files:
+            full_path = os.path.join(base_folder, monitor_base_folder, filename)
+            short_filename = filename[len(folder) +1:]
+            new_path = os.path.join(transfer_folder_abs, short_filename)
+            directory =  os.path.dirname(short_filename)
 
-        if directory and '.DS_Store' not in short_filename:
-            delete_folders.add(os.path.dirname(filename))
+            if directory and '.DS_Store' not in short_filename:
+                delete_folders.add(os.path.dirname(filename))
 
-        try:
-            album_folder = os.path.join(base_folder,transfer_base_folder,transfer_folder,directory)
-            os.makedirs(album_folder)
-        except:
-            pass
+            try:
+                album_folder = os.path.join(base_folder,transfer_base_folder,transfer_folder,directory)
+                os.makedirs(album_folder)
+            except:
+                pass
 
-        shutil.move(full_path,new_path)
-        
-        inventory.append((short_filename,md5,folder))
+            shutil.move(full_path,new_path)
+            
+            inventory.append((short_filename,md5,folder))
 
-for folder in delete_folders:
-    for i in range(folder.count('/'),0,-1):
-        sub_folder = '/'.join(folder.split('/')[:i+1])
-        shutil.rmtree(os.path.join(base_folder, monitor_base_folder, sub_folder))
-
-#pprint(inventory)
-f = file(os.path.join(transfer_folder_abs,'inventory.pickle'),'w') 
-pickle.dump(inventory,f)
-f.close()
+    for folder in delete_folders:
+        for i in range(folder.count('/'),0,-1):
+            sub_folder = '/'.join(folder.split('/')[:i+1])
+            shutil.rmtree(os.path.join(base_folder, monitor_base_folder, sub_folder))
+    try:
+        #pprint(inventory)
+        f = file(os.path.join(transfer_folder_abs,'inventory.pickle'),'w') 
+        pickle.dump(inventory,f)
+        f.close()
+    except:
+        pass
 
 for host_lock in hosts_locks:
     try:

@@ -62,6 +62,7 @@ def is_root():
     return False
 
 def load_agent(agent):
+    print "launchctl load %s" % agent
     execute("launchctl load %s" % agent)
 
 def unload_agent(agent):
