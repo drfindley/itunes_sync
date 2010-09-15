@@ -29,6 +29,9 @@ for folder in os.listdir(TRANSFER_FOLDER):
         continue
     
     print abs_folder
+    if os.path.exists(os.path.join(abs_folder,hostname + '.completed')):
+        continue
+
 
     #TODO 'inventory.pickle' should be in the config, not hardcoded
     inventory_pickle = os.path.join(abs_folder, INVENTORY_PICKLE)
@@ -80,7 +83,7 @@ for folder in os.listdir(TRANSFER_FOLDER):
         continue
     
     print "cp %s to %s " % (abs_folder,os.path.join(ITUNES_FOLDER,folder))
-    ignore = shutil.ignore_patterns('*.jpg','*.pickle')
+    ignore = shutil.ignore_patterns('*.jpg','*.pickle','*.completed')
     shutil.copytree(abs_folder, os.path.join(ITUNES_FOLDER,folder),ignore=ignore)
 
     for filename,inv_md5,music_folder in inventory:
@@ -102,8 +105,8 @@ for folder in os.listdir(TRANSFER_FOLDER):
             shutil.copy(abs_filename,backup_music_filename)
             print "cp to %s " % backup_music_filename
 
-
-
+    with open(os.path.join(abs_folder,hostname + '.completed'),'w') as f:
+        f.write('done')
 
     # TODO: Delete this thing
     #sys.exit()

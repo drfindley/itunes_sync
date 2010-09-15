@@ -112,6 +112,8 @@ transfer_folder = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%f")
 #print transfer_folder
 transfer_folder_abs = os.path.join(base_folder, transfer_base_folder,transfer_folder)
 #print transfer_folder_abs
+os.path.makedirs(transfer_folder_abs)
+os.chown(transfer_folder_abs,502,20)
 
 if music_files:
     delete_folders = set()
@@ -156,4 +158,8 @@ for host_lock in hosts_locks:
         os.remove(host_lock)
     except:
         pass
+
+with open(os.path.join(base_folder, 'monitor.completed'),'w') as f:
+    f.write('done')
+
 os.remove(monitor_lock)
