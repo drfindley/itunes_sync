@@ -1,12 +1,12 @@
 # CONFIG
 
 hosts = {
-    'cuttooth':{
-        'base_folder':'/Volumes/data/adam/Dropbox/Music Transfer',
-        'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Fasttrack]', 'iTunes [Exclude Melatonin]'],
-        'backup_folders': [],
-        'itunes_folder': '',
-    },
+#    'cuttooth':{
+#        'base_folder':'/Volumes/data/adam/Dropbox/Music Transfer',
+#        'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Fasttrack]', 'iTunes [Exclude Melatonin]'],
+#        'backup_folders': [],
+#        'itunes_folder': '',
+#    },
     'fasttrack':{
         'base_folder':'/Volumes/data/adam/Dropbox/Dropbox/Music Transfer',
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Cuttooth]', 'iTunes [Exclude Melatonin]'],

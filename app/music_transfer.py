@@ -20,7 +20,7 @@ BACKUP_FOLDERS          = config.hosts[hostname]['backup_folders']
 
 INVENTORY_PICKLE = 'inventory.pickle'
 NUM_TRIES = 5
-WAIT_TIME = 0 #5 * 60
+WAIT_TIME = 5 * 60
 
 for folder in os.listdir(TRANSFER_FOLDER):
     abs_folder = os.path.join(TRANSFER_FOLDER,folder)
@@ -108,5 +108,5 @@ for folder in os.listdir(TRANSFER_FOLDER):
     with open(os.path.join(abs_folder,hostname + '.completed'),'w') as f:
         f.write('done')
 
-    # TODO: Delete this thing
-    #sys.exit()
+with open(os.path.join(base_folder, 'transfer.completed'),'w') as f:
+    f.write('done')

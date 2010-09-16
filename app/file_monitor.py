@@ -112,8 +112,11 @@ transfer_folder = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%f")
 #print transfer_folder
 transfer_folder_abs = os.path.join(base_folder, transfer_base_folder,transfer_folder)
 #print transfer_folder_abs
-os.path.makedirs(transfer_folder_abs)
-os.chown(transfer_folder_abs,502,20)
+os.makedirs(transfer_folder_abs)
+#TODO make this a pramameter
+uid = int(utils.execute("id -u adam"))
+gid = -1
+os.chown(transfer_folder_abs,uid,gid)
 
 if music_files:
     delete_folders = set()
