@@ -163,7 +163,7 @@ for host_lock in hosts_locks:
     except:
         pass
 
-with open(os.path.join(base_folder, 'monitor.completed'),'w') as f:
-    f.write('done')
+monitor_completed = os.path.join(base_folder, 'monitor.completed')
+aquire_lock(monitor_completed)
 
 os.remove(monitor_lock)

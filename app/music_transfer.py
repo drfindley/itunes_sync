@@ -105,8 +105,8 @@ for folder in os.listdir(TRANSFER_FOLDER):
             shutil.copy(abs_filename,backup_music_filename)
             print "cp to %s " % backup_music_filename
 
-    with open(os.path.join(abs_folder,hostname + '.completed'),'w') as f:
-        f.write('done')
+    host_completed = os.path.join(abs_folder,hostname + '.completed')
+    aquire_lock(host_completed)
 
-with open(os.path.join(BASE_FOLDER, 'transfer.completed'),'w') as f:
-    f.write('done')
+transfer_completed = os.path.join(BASE_FOLDER, 'transfer.completed')
+aquire_lock(transfer_completed)

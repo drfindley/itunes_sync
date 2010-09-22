@@ -42,7 +42,7 @@ def check_lock(lock_file,exit=False):
 
 def aquire_lock(lock_file):
     if os.path.exists(lock_file):
-        print "Lock already aquired"
+        print "Lock %s already aquired" % lock_file
         sys.exit(0)
 
     with open(lock_file, 'w') as lock:
@@ -62,9 +62,11 @@ def is_root():
     return False
 
 def load_agent(agent):
-    print "sudo launchctl load %s" % agent
-    execute("launchctl load %s" % agent)
+    user = 'adam'
+    print "sudo -u %s launchctl load %s" % (user,agent)
+    execute("sudo -u %s launchctl load %s" % (user,agent))
 
 def unload_agent(agent):
-    print "sudo launchctl unload %s" % agent
-    execute("launchctl unload %s" % agent)
+    user = 'adam'
+    print "sudo -u %s launchctl unload %s" % (user,agent)
+    execute("sudo -u %s launchctl unload %s" % (user,agent))
