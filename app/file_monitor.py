@@ -164,6 +164,6 @@ for host_lock in hosts_locks:
         pass
 
 monitor_completed = os.path.join(base_folder, 'monitor.completed')
-aquire_lock(monitor_completed)
+utils.touch_lock(monitor_completed)
 
 os.remove(monitor_lock)

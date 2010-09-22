@@ -106,7 +106,7 @@ for folder in os.listdir(TRANSFER_FOLDER):
             print "cp to %s " % backup_music_filename
 
     host_completed = os.path.join(abs_folder,hostname + '.completed')
-    aquire_lock(host_completed)
+    utils.aquire_lock(host_completed)
 
 transfer_completed = os.path.join(BASE_FOLDER, 'transfer.completed')
-aquire_lock(transfer_completed)
+utils.touch_lock(transfer_completed)

@@ -48,6 +48,10 @@ def aquire_lock(lock_file):
     with open(lock_file, 'w') as lock:
         lock.write("%s %f" % (get_hostname(), time()))
 
+def touch_lock(lock_file):
+    with open(lock_file, 'w') as lock:
+        lock.write("%s %f" % (get_hostname(), time()))
+
 def remove_lock(lock_file):
     if os.path.exists(lock_file):
         print "Lock already aquired"
