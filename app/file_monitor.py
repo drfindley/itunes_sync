@@ -119,6 +119,7 @@ gid = -1
 os.chown(transfer_folder_abs,uid,gid)
 
 if music_files:
+    print music_files
     delete_folders = set()
 
     for folder, files in music_files.iteritems():

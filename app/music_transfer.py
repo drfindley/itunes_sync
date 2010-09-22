@@ -108,5 +108,5 @@ for folder in os.listdir(TRANSFER_FOLDER):
     with open(os.path.join(abs_folder,hostname + '.completed'),'w') as f:
         f.write('done')
 
-with open(os.path.join(base_folder, 'transfer.completed'),'w') as f:
+with open(os.path.join(BASE_FOLDER, 'transfer.completed'),'w') as f:
     f.write('done')

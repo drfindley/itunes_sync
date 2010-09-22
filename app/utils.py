@@ -62,8 +62,9 @@ def is_root():
     return False
 
 def load_agent(agent):
-    print "launchctl load %s" % agent
+    print "sudo launchctl load %s" % agent
     execute("launchctl load %s" % agent)
 
 def unload_agent(agent):
+    print "sudo launchctl unload %s" % agent
     execute("launchctl unload %s" % agent)
