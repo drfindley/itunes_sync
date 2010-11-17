@@ -11,14 +11,13 @@ hosts = {
         'base_folder':'/Volumes/data/adam/Dropbox/Dropbox/Music Transfer',
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Cuttooth]', 'iTunes [Exclude Melatonin]'],
         'backup_folders': [],
-        #'itunes_folder': '/Volumes/data/iTunes/iTunes Music/Automatically Add to iTunes',
-        'itunes_folder': '/Users/adam/Music/iTunes Test/iTunes Media/Automatically Add to iTunes',
+        'itunes_folder': '/Volumes/data/iTunes/iTunes Music/Automatically Add to iTunes',
     },
     'melatonin':{
         'base_folder':'/Users/adam/Dropbox/Music Transfer',
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude Cuttooth]', 'iTunes [Exclude Fasttrack]'],
         'backup_folders': ['/Volumes/Drobo/Music [Lossy]'],
-        'itunes_folder': '/Volumes/iTunes/iTunes Test/iTunes Media/Automatically Add to iTunes',
+        'itunes_folder': '/Users/adam/Music/iTunes/iTunes Media/Automatically Add to iTunes',
     },
 }
 
