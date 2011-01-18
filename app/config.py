@@ -6,7 +6,7 @@ hosts = {
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude cuttooth]', 'iTunes [Exclude fasttrack]', 'iTunes [Exclude melatonin]'],
         'backup_folders': [],
         'itunes_folder': '/Users/adam/Music/iTunes/iTunes Media/Automatically Add to iTunes',
-#    },
+    },
     'fasttrack':{
         'base_folder':'/Users/adam/Dropbox/Music Transfer',
         'monitor_folders': ['Amazon MP3', 'Emusic', 'other', 'iTunes [Exclude cuttooth]', 'iTunes [Exclude fasttrack]', 'iTunes [Exclude melatonin]'],
